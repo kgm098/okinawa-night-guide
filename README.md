@@ -1,36 +1,139 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 沖縄ナイトガイド 2.0
 
-## Getting Started
+那覇・北谷を中心に、BAR・居酒屋・深夜営業店を探せるローカルナイトメディア。
 
-First, run the development server:
+## 技術スタック
+
+| 項目 | 内容 |
+|------|------|
+| フレームワーク | Next.js 16 (App Router) |
+| 言語 | TypeScript |
+| スタイル | Tailwind CSS v4 |
+| DB / BaaS | Supabase |
+| ホスティング | Vercel |
+
+---
+
+## ローカル起動
 
 ```bash
+# 1. 依存インストール
+npm install
+
+# 2. 環境変数を設定
+cp .env.local.example .env.local
+# .env.local を編集して Supabase の値を入力
+
+# 3. 開発サーバー起動
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# → http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 環境変数
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`.env.local` に以下を設定してください。
 
-## Learn More
+| 変数名 | 取得場所 |
+|--------|----------|
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase Dashboard → Project Settings → API → Project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase Dashboard → Project Settings → API → anon public |
 
-To learn more about Next.js, take a look at the following resources:
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://xxxxxxxxxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGci...
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Supabase セットアップ
 
-## Deploy on Vercel
+### 1. テーブル作成（schema.sql）
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+Supabase Dashboard → SQL Editor → 新規クエリ
+↓
+supabase/schema.sql の内容を貼り付けて実行
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 2. 初期データ投入（seed.sql）
+
+```
+Supabase Dashboard → SQL Editor → 新規クエリ
+↓
+supabase/seed.sql の内容を貼り付けて実行
+```
+
+### 3. Storage バケット作成
+
+```
+Supabase Dashboard → Storage → New bucket
+  名前: shop-images
+  Public: ON
+```
+
+---
+
+## Vercel デプロイ
+
+### 手順
+
+```
+1. GitHub にリポジトリを push
+2. vercel.com → New Project → GitHub リポジトリを選択
+3. Framework Preset: Next.js（自動検出）
+4. 環境変数を設定（下記参照）
+5. Deploy
+```
+
+### Vercel 環境変数の設定
+
+Vercel Dashboard → Project → Settings → Environment Variables に以下を追加：
+
+| 変数名 | 値 | 環境 |
+|--------|-----|------|
+| `NEXT_PUBLIC_SUPABASE_URL` | SupabaseのProject URL | Production / Preview / Development |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabaseのanon key | Production / Preview / Development |
+
+> **注意**: `NEXT_PUBLIC_` プレフィックスがついている変数はブラウザにも公開されます。`anon key` は公開用の読み取り専用キーなので問題ありません。書き込みはRLS（Row Level Security）で保護されています。
+
+---
+
+## ページ一覧
+
+| URL | 概要 |
+|-----|------|
+| `/` | トップページ（人気店舗・エリア・ジャンル） |
+| `/shops` | 店舗一覧（エリア・ジャンルフィルター対応） |
+| `/shops/[slug]` | 店舗詳細 |
+| `/listing-info` | 掲載案内（店舗オーナー向け） |
+
+---
+
+## ディレクトリ構成
+
+```
+src/
+├── app/
+│   ├── layout.tsx          # 共通レイアウト（Header / Footer）
+│   ├── page.tsx            # トップページ
+│   ├── shops/
+│   │   ├── page.tsx        # 店舗一覧・フィルター
+│   │   └── [slug]/
+│   │       └── page.tsx    # 店舗詳細
+│   └── listing-info/
+│       └── page.tsx        # 掲載案内
+├── components/             # 共通コンポーネント
+└── lib/
+    ├── labels.ts           # エリア・ジャンルのラベル変換
+    └── supabase/
+        ├── client.ts       # ブラウザ用クライアント
+        ├── server.ts       # サーバーコンポーネント用クライアント
+        ├── static.ts       # ビルド時（generateStaticParams）用クライアント
+        └── types.ts        # TypeScript型定義
+
+supabase/
+├── schema.sql              # テーブル・インデックス・RLS定義
+└── seed.sql                # 初期店舗データ10件
+```
