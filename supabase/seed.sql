@@ -49,11 +49,11 @@ values
   null,
   'https://www.instagram.com/bar_daisy_naha/',
   null,
-  'shop-images/bar-daisy/main.jpg',
+  'bar-daisy/main.jpg',
   array[
-    'shop-images/bar-daisy/gallery-01.jpg',
-    'shop-images/bar-daisy/gallery-02.jpg',
-    'shop-images/bar-daisy/gallery-03.jpg'
+    'bar-daisy/gallery-01.jpg',
+    'bar-daisy/gallery-02.jpg',
+    'bar-daisy/gallery-03.jpg'
   ],
   true,
   true,
@@ -80,10 +80,10 @@ values
   null,
   null,
   null,
-  'shop-images/bar-sou/main.jpg',
+  'bar-sou/main.jpg',
   array[
-    'shop-images/bar-sou/gallery-01.jpg',
-    'shop-images/bar-sou/gallery-02.jpg'
+    'bar-sou/gallery-01.jpg',
+    'bar-sou/gallery-02.jpg'
   ],
   false,
   true,
@@ -110,11 +110,11 @@ values
   null,
   null,
   null,
-  'shop-images/bar-stir-laboratory/main.jpg',
+  'bar-stir-laboratory/main.jpg',
   array[
-    'shop-images/bar-stir-laboratory/gallery-01.jpg',
-    'shop-images/bar-stir-laboratory/gallery-02.jpg',
-    'shop-images/bar-stir-laboratory/gallery-03.jpg'
+    'bar-stir-laboratory/gallery-01.jpg',
+    'bar-stir-laboratory/gallery-02.jpg',
+    'bar-stir-laboratory/gallery-03.jpg'
   ],
   true,
   false,
@@ -141,10 +141,10 @@ values
   null,
   null,
   null,
-  'shop-images/bar-hammock/main.jpg',
+  'bar-hammock/main.jpg',
   array[
-    'shop-images/bar-hammock/gallery-01.jpg',
-    'shop-images/bar-hammock/gallery-02.jpg'
+    'bar-hammock/gallery-01.jpg',
+    'bar-hammock/gallery-02.jpg'
   ],
   false,
   false,
@@ -171,10 +171,10 @@ values
   null,
   null,
   null,
-  'shop-images/bar-30s-room/main.jpg',
+  'bar-30s-room/main.jpg',
   array[
-    'shop-images/bar-30s-room/gallery-01.jpg',
-    'shop-images/bar-30s-room/gallery-02.jpg'
+    'bar-30s-room/gallery-01.jpg',
+    'bar-30s-room/gallery-02.jpg'
   ],
   false,
   false,
@@ -201,11 +201,11 @@ values
   null,
   null,
   null,
-  'shop-images/bar-cafe-7c/main.jpg',
+  'bar-cafe-7c/main.jpg',
   array[
-    'shop-images/bar-cafe-7c/gallery-01.jpg',
-    'shop-images/bar-cafe-7c/gallery-02.jpg',
-    'shop-images/bar-cafe-7c/gallery-03.jpg'
+    'bar-cafe-7c/gallery-01.jpg',
+    'bar-cafe-7c/gallery-02.jpg',
+    'bar-cafe-7c/gallery-03.jpg'
   ],
   false,
   true,
@@ -232,10 +232,10 @@ values
   null,
   null,
   null,
-  'shop-images/bar-fortuna/main.jpg',
+  'bar-fortuna/main.jpg',
   array[
-    'shop-images/bar-fortuna/gallery-01.jpg',
-    'shop-images/bar-fortuna/gallery-02.jpg'
+    'bar-fortuna/gallery-01.jpg',
+    'bar-fortuna/gallery-02.jpg'
   ],
   true,
   true,
@@ -262,11 +262,11 @@ values
   null,
   null,
   null,
-  'shop-images/bar-no-11/main.jpg',
+  'bar-no-11/main.jpg',
   array[
-    'shop-images/bar-no-11/gallery-01.jpg',
-    'shop-images/bar-no-11/gallery-02.jpg',
-    'shop-images/bar-no-11/gallery-03.jpg'
+    'bar-no-11/gallery-01.jpg',
+    'bar-no-11/gallery-02.jpg',
+    'bar-no-11/gallery-03.jpg'
   ],
   false,
   false,
@@ -293,10 +293,10 @@ values
   null,
   null,
   null,
-  'shop-images/whisky-and-japan/main.jpg',
+  'whisky-and-japan/main.jpg',
   array[
-    'shop-images/whisky-and-japan/gallery-01.jpg',
-    'shop-images/whisky-and-japan/gallery-02.jpg'
+    'whisky-and-japan/gallery-01.jpg',
+    'whisky-and-japan/gallery-02.jpg'
   ],
   true,
   false,
@@ -323,11 +323,11 @@ values
   null,
   null,
   null,
-  'shop-images/rise-sakaba/main.jpg',
+  'rise-sakaba/main.jpg',
   array[
-    'shop-images/rise-sakaba/gallery-01.jpg',
-    'shop-images/rise-sakaba/gallery-02.jpg',
-    'shop-images/rise-sakaba/gallery-03.jpg'
+    'rise-sakaba/gallery-01.jpg',
+    'rise-sakaba/gallery-02.jpg',
+    'rise-sakaba/gallery-03.jpg'
   ],
   false,
   true,

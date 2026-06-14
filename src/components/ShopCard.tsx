@@ -2,15 +2,14 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Shop } from "@/lib/supabase/types";
 import { AREA_LABEL, GENRE_LABEL } from "@/lib/labels";
+import { getStorageUrl } from "@/lib/storage";
 
 interface ShopCardProps {
   shop: Shop;
 }
 
 export default function ShopCard({ shop }: ShopCardProps) {
-  const imageUrl = shop.main_image
-    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/shop-images/${shop.main_image}`
-    : null;
+  const imageUrl = getStorageUrl(shop.main_image);
 
   return (
     <article

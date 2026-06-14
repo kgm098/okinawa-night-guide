@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/server";
 import { createStaticClient } from "@/lib/supabase/static";
 import { AREA_LABEL, GENRE_LABEL } from "@/lib/labels";
 import type { Shop } from "@/lib/supabase/types";
+import { getStorageUrl, getGalleryUrls } from "@/lib/storage";
 import ShopInfoRow from "@/components/ShopInfoRow";
 import RelatedShops from "@/components/RelatedShops";
 
@@ -116,15 +117,8 @@ export default async function ShopDetailPage({
 
   const typedShop = shop as Shop;
 
-  const mainImageUrl = typedShop.main_image
-    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/shop-images/${typedShop.main_image}`
-    : null;
-
-  const galleryUrls = typedShop.gallery_images
-    .map(
-      (path) =>
-        `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/shop-images/${path}`
-    );
+  const mainImageUrl = getStorageUrl(typedShop.main_image);
+  const galleryUrls = getGalleryUrls(typedShop.gallery_images);
 
   // 関連店舗：同エリア・別slug・最大3件
   const { data: relatedRaw } = await supabase
