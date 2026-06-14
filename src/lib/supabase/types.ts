@@ -31,6 +31,8 @@ export interface Shop {
   description: string | null;
   catch_copy: string | null;
   address: string | null;
+  phone: string | null;
+  access: string | null;
   business_hours: string | null;
   closed_days: string | null;
   budget: string | null;
